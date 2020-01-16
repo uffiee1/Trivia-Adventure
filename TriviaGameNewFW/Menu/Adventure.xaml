@@ -7,8 +7,8 @@
     mc:Ignorable="d" >
 
 
-    <Grid Name="AdventureGrid">
-        <Grid x:Name="myGrid">
+    <Grid Name="AdventureGrid" >
+        <Grid x:Name="myGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>

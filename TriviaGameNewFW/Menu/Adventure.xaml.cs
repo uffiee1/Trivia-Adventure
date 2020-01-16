@@ -21,15 +21,27 @@ namespace TriviaGameNewFW.Menu
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Adventure : Page
-    {
+    public sealed partial class Adventure : Page {
+
+
+        UserInformation CurrentUser = new UserInformation();
+
         public int buttonCounter;
+
         db connection = new db();
+
         List<string> Category = new List<string>();
+
         public Adventure()
         {
             this.InitializeComponent();
+
             ShowCategory();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            CurrentUser = e.Parameter as UserInformation;
         }
 
         void ShowCategory()
@@ -38,17 +50,17 @@ namespace TriviaGameNewFW.Menu
 
             for (var i = 0; i < Category.Count; i++)
             {
-                GameInformation catInfo= connection.CategoryInfo($"SELECT * FROM `category` WHERE `id` ="+ Category[i]);
+                UserInformation catInfo= CurrentUser.CategoryInfo($"SELECT * FROM `category` WHERE `id` ="+ Category[i]);
 
                 //Create the button
                 Button b = new Button();
-                b.Height = 30;
-                b.Width = 200;
+               
                 b.VerticalAlignment = VerticalAlignment.Top;
                 b.HorizontalAlignment = HorizontalAlignment.Left;
                 b.Margin = new Thickness(20, 20, 0, 0);
-                b.Background = new SolidColorBrush();
-                b.Name = Convert.ToString(catInfo.CategoryID);
+                b.Style = Application.Current.Resources["AdventureButtonName"] as Style;
+               
+                b.Name = Convert.ToString(catInfo.CategoryId);
                 b.Content = Convert.ToString(catInfo.CategoryName);
                 b.Click += new RoutedEventHandler(Category_Click);
 
@@ -75,9 +87,12 @@ namespace TriviaGameNewFW.Menu
             
             Quiz theNewForm = new Quiz();
 
-            GameInformation catInfo = connection.CategoryInfo($"SELECT * FROM `category` WHERE `id` =" + btn.Name);
+            UserInformation catInfo = CurrentUser.CategoryInfo($"SELECT * FROM `category` WHERE `id` =" + btn.Name);
+            CurrentUser.CategoryName = catInfo.CategoryName;
+            CurrentUser.CategoryId = catInfo.CategoryId;
+            CurrentUser.CategoryDesc = catInfo.CategoryDesc;
 
-            this.Frame.Navigate(typeof(Quiz), catInfo);
+            this.Frame.Navigate(typeof(Quiz), CurrentUser);
 
         }
         

@@ -4,5 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:TriviaGameNewFW"
     RequestedTheme="Light">
-
+    <Application.Resources>
+            <ResourceDictionary Source="AdventureButton.xaml"></ResourceDictionary>
+             
+    </Application.Resources>
 </Application>

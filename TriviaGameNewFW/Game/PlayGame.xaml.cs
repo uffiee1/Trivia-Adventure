@@ -13,8 +13,9 @@ namespace TriviaGameNewFW.Game
     public sealed partial class PlayGame : Page
     {
         db connection = new db();
-        private ChapterInformation playableChapters { get; set; }
+        private UserInformation currentUserInformation { get; set; }
         public PlayInformation Questions { get; set; }
+
         public List<string> ListQuestions = new List<string>();
         List<PlayInformation> ObjectQuestions = new List<PlayInformation>();
         int questionNumber = 0;
@@ -24,9 +25,9 @@ namespace TriviaGameNewFW.Game
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            playableChapters = e.Parameter as ChapterInformation;
-            QuestionHolderText.Text = playableChapters.ChapterName;
-            ListQuestions = connection.SelectedQuestions($"SELECT id FROM `question` WHERE `category` =" + playableChapters.ChapterCat + " AND `chapter`=" + playableChapters.ChapterID + " ORDER BY RAND()");
+            currentUserInformation = e.Parameter as UserInformation;
+            QuestionHolderText.Text = currentUserInformation.ChapterName;
+            ListQuestions = connection.SelectedQuestions($"SELECT id FROM `question` WHERE `category` =" + currentUserInformation.ChapterCat + " AND `chapter`=" + currentUserInformation.ChapterID + " ORDER BY RAND()");
             GetQuestions();
         }
 
@@ -41,7 +42,7 @@ namespace TriviaGameNewFW.Game
             {
                 try
                 {
-                    ObjectQuestions = connection.PlayInfo($"SELECT * FROM `question` WHERE `category` = " + playableChapters.ChapterCat + " AND `chapter`= " + playableChapters.ChapterID);
+                    ObjectQuestions = connection.PlayInfo($"SELECT * FROM `question` WHERE `category` = " + currentUserInformation.ChapterCat + " AND `chapter`= " + currentUserInformation.ChapterID);
                     ShowQuestions(answered);
                 }
                 catch (Exception)
@@ -52,7 +53,9 @@ namespace TriviaGameNewFW.Game
             {
                 var dialog = new MessageDialog("Je bent klaar met de eerste quiz", "Dank u voor het spelen!");
                 var res = await dialog.ShowAsync();
-                this.Frame.Navigate(typeof(Quiz), playableChapters);
+
+                connection.insertScore(currentUserInformation.UserID,Convert.ToString(score));
+                this.Frame.Navigate(typeof(Quiz), currentUserInformation);
             }
         }
         public void ShowQuestions(int CurrentQuestion)

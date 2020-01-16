@@ -99,46 +99,16 @@ namespace TriviaGameNewFW
         }
 
 
-        public ChapterInformation GameInfo(string sqli)
+        public void insertScore(int id, string score) 
         {
-
-            ChapterInformation gameInfo = new ChapterInformation();
-
-            MySqlCommand cmd = new MySqlCommand(sqli, con);
-
+            string sqlQuery = $"UPDATE user SET score = "+score+" WHERE id ="+id+"";
+            MySqlCommand cmd = new MySqlCommand(sqlQuery, con);
             con.Open();
             MySqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                gameInfo.ChapterName = reader.GetString("name");
-                gameInfo.ChapterID = reader.GetString("id");
-                gameInfo.ChapterDesc = reader.GetString("description");
-                gameInfo.ChapterCat = reader.GetString("category");
-
-            }
             con.Close();
-            return gameInfo;
         }
 
-        public GameInformation CategoryInfo(string sqli)
-        {
-            GameInformation gameInfo = new GameInformation();
 
-            MySqlCommand cmd = new MySqlCommand(sqli, con);
-
-            con.Open();
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
-            {
-                gameInfo.CategoryName = reader.GetString("cat_name");
-                gameInfo.CategoryID = reader.GetString("id");
-                gameInfo.CategoryDesc = reader.GetString("cat_desc");
-            }
-            con.Close();
-            return gameInfo;
-        }
 
         public List<string> QuizInfo(string sqli)
         {

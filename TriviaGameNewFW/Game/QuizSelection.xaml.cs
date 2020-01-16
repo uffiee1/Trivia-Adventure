@@ -26,11 +26,13 @@ namespace TriviaGameNewFW
 
 
         int buttonCounter = 0;
-        private GameInformation catInfo { get; set; }
-        db connection = new db();
-        List<string> Chapters = new List<string>();
-        public ChapterInformation playableChapters = new ChapterInformation();
+        private UserInformation userInformation { get; set; }
 
+        UserInformation ChosenChapters = new UserInformation();
+
+        List<string> Chapters = new List<string>();
+
+        db con = new db();
 
         public Quiz()
         {
@@ -44,24 +46,19 @@ namespace TriviaGameNewFW
             base.OnNavigatedTo(e);
             try
             {
-                catInfo = e.Parameter as GameInformation;
-                TextBlockQuiz.Text = catInfo.CategoryDesc;
-                playableChapters.ChapterCat = Convert.ToString(catInfo.CategoryID);
-                ShowChapters(catInfo.CategoryID);
+                userInformation = e.Parameter as UserInformation;
+                userInformation.ChapterCat = Convert.ToString(userInformation.CategoryId);
+                ShowChapters(Convert.ToString(userInformation.CategoryId));
             }
             catch (Exception)
-            {
-
-                
+            {   
             }
-            
-
         }
 
         void ShowChapters(string CategoryName)
         {
             //All chapters that are connected to a category
-            Chapters = connection.QuizInfo($"SELECT * FROM `chapter` WHERE `category` = "+ CategoryName);
+            Chapters = con.QuizInfo($"SELECT * FROM `chapter` WHERE `category` = "+ CategoryName);
 
 
             foreach (string item in Chapters)
@@ -73,11 +70,12 @@ namespace TriviaGameNewFW
                     Button b = new Button();
                     b.Height = 50;
                     b.Width = 300;
-                    b.Background = new SolidColorBrush(Colors.Azure);
+                    b.Style = Application.Current.Resources["AdventureButtonName"] as Style;
+
                     b.VerticalAlignment = VerticalAlignment.Top;
                     b.HorizontalAlignment = HorizontalAlignment.Left;
                     b.Margin = new Thickness(20, buttonCounter*100, 0, 0);
-                    b.Name = item;
+                    b.Name = item + "/n" + userInformation.CategoryDesc;
                     b.Content = item;
                     b.Click += new RoutedEventHandler(Quiz_Click);
 
@@ -108,15 +106,17 @@ namespace TriviaGameNewFW
         }
         public void Quiz_Click(object sender, RoutedEventArgs e)
         {
-            //Als er op een Chapter word geklikt
-
             Button btn = sender as Button; 
             string v = Convert.ToString(btn.Content);
 
-            ChapterInformation playableChapters = connection.GameInfo($"SELECT * FROM `chapter` WHERE `category` = " + catInfo.CategoryID + " AND `name` = '" + v+"'");
-            playableChapters.ChapterCat = catInfo.CategoryID;
+            UserInformation playableChapters = ChosenChapters.ChapterInformation($"SELECT * FROM `chapter` WHERE `category` = " + userInformation.CategoryId + " AND `name` = '" + v+"'");
 
-            this.Frame.Navigate(typeof(Game.PlayGame),playableChapters);
+            userInformation.ChapterCat = Convert.ToString(userInformation.CategoryId);
+            userInformation.ChapterName = playableChapters.ChapterName;
+            userInformation.ChapterID = playableChapters.ChapterID;
+            userInformation.ChapterDesc = playableChapters.ChapterDesc;
+
+            this.Frame.Navigate(typeof(Game.PlayGame),userInformation);
             
 
         }

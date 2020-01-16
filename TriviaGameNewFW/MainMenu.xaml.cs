@@ -12,37 +12,11 @@ namespace TriviaGameNewFW
     {
         UserInformation CurrentUser = new UserInformation();
         public MainMenu()
-        {//string v_role
+        {
             this.InitializeComponent();
-            //txtbxUserRole.Text = v_role;
-            //SetRoles();
+            
             
         }
-
-        MySqlConnection con = new MySqlConnection("host=localhost;user=root;password=;database=triviadb;");
-        MySqlDataAdapter adapter = new MySqlDataAdapter();
-        public DataSet ds = new DataSet();
-        MySqlDataReader reader;
-        
-
-
-
-
-        private async void SetRoles()
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                var dialog = new MessageDialog(ex.Message);
-                var res = await dialog.ShowAsync();
-                con.Close();
-            }
-        }
-
-
 
         #region NavigationView event 
 
@@ -59,7 +33,9 @@ namespace TriviaGameNewFW
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            LoggedUserText.Text = CurrentUser.WelcomeMessage(Convert.ToString(e.Parameter));
+            CurrentUser = e.Parameter as UserInformation;
+            LoggedUserText.Text = CurrentUser.Username;
+
         }
         public void NavigationViewControl_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
@@ -70,31 +46,31 @@ namespace TriviaGameNewFW
                 switch (ItemContent)
                 {
                     case "Adventure":
-                        contentFrame.Navigate(typeof(Menu.Adventure));
+                        contentFrame.Navigate(typeof(Menu.Adventure),CurrentUser);
                         break;
 
                     case "Multiplayer":
-                        contentFrame.Navigate(typeof(Menu.Multiplayer));
+                        contentFrame.Navigate(typeof(Menu.Multiplayer), CurrentUser);
                         break;
 
                     case "Settings":
-                        contentFrame.Navigate(typeof(Menu.Settings));
+                        contentFrame.Navigate(typeof(Menu.Settings), CurrentUser);
                         break;
 
                     case "Help":
-                        contentFrame.Navigate(typeof(Menu.Help));
+                        contentFrame.Navigate(typeof(Menu.Help), CurrentUser);
                         break;
 
                     case "Homepage":
-                        contentFrame.Navigate(typeof(Menu.HomePage));
+                        contentFrame.Navigate(typeof(Menu.HomePage), CurrentUser);
                         break;
 
                     case "Profile":
-                        contentFrame.Navigate(typeof(Menu.Profile));
+                        contentFrame.Navigate(typeof(Menu.Profile), CurrentUser);
                         break;
 
                     case "Logout":
-                        contentFrame.Navigate(typeof(Menu.Logout));
+                        contentFrame.Navigate(typeof(Menu.Logout), CurrentUser);
                         break;
                 }
             }
