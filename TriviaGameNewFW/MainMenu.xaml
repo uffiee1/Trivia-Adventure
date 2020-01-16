@@ -11,7 +11,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="Fill" ImageSource="Assets/Background_background1080.gif" AlignmentY="Top" AlignmentX="Center"/>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/home.gif" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
         <StackPanel>
         </StackPanel>

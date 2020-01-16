@@ -164,11 +164,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Background_background1080.gif" />
+    <Content Include="Assets\home.gif" />
+    <Content Include="Assets\instellingen.gif" />
+    <Content Include="Assets\leaderboard.gif" />
+    <Content Include="Assets\login.gif" />
     <Content Include="Assets\logo_icoon.png" />
     <Content Include="Assets\achtergrond_trivia.png" />
     <Content Include="Assets\logo_text.png" />
     <Content Include="Assets\trivia-music.wav" />
-    <Content Include="Assets\trivia-text.jpeg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

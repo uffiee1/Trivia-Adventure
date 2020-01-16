@@ -23,6 +23,9 @@
                     <x:String>Gemiddeld</x:String>
                     <x:String>Moeilijk</x:String>
                 </ComboBox>
+                <Grid.Background>
+                    <ImageBrush   Stretch="Fill" ImageSource="../Assets/instellingen.gif" AlignmentY="Top" AlignmentX="Center"/>
+                </Grid.Background>
             </Grid>
         </StackPanel>
 

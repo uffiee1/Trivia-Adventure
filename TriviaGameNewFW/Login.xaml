@@ -29,7 +29,7 @@
         <TextBlock HorizontalAlignment="Center" Margin="0,356,0,0" Text="Inloggen" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="40" Width="171" FontWeight="Bold"/>
         <MediaElement x:Name="myPlayer" AutoPlay="True" />
         <Grid.Background>
-            <ImageBrush   Stretch="Fill" ImageSource="../Assets/Background_background1080.gif" AlignmentY="Top" AlignmentX="Center"/>
+            <ImageBrush   Stretch="Fill" ImageSource="../Assets/login.gif" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>
     </Grid>
 </Page>

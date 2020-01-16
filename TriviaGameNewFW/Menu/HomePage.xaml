@@ -41,40 +41,11 @@
         <RowDefinition Height="Auto" />
         <RowDefinition Height="*" />
     </Grid.RowDefinitions>
-    <StackPanel Orientation="Horizontal" Margin="124,58,76,142">
+        <StackPanel Orientation="Horizontal" Margin="124,58,76,142">
             <TextBlock Text="Leaderboard van uw Adventure." VerticalAlignment="Center" Margin="5,0" Style="{ThemeResource SubtitleTextBlockStyle}"></TextBlock>
         </StackPanel>
-        
-    <!--<controls:DataGrid
-      Grid.Row="1"
-        x:Name="dataGrid"
-        Margin="12"
-        VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-        HorizontalScrollBarVisibility="Visible"
-        VerticalScrollBarVisibility="Visible"
-        AlternatingRowBackground="DimGray"
-        AlternatingRowForeground="FloralWhite"
-        AreRowDetailsFrozen="False"
-        AreRowGroupHeadersFrozen="True"
-        AutoGenerateColumns="False"
-        CanUserSortColumns="True"
-        CanUserReorderColumns="True"
-        CanUserResizeColumns="True"
-        FrozenColumnCount="3"
-        GridLinesVisibility="None"
-        HeadersVisibility="All"
-        IsReadOnly="True"
-        RowDetailsTemplate="{StaticResource RowDetailsTemplate}"
-        RowDetailsVisibilityMode="VisibleWhenSelected"
-        SelectionMode="Extended"
-        RowGroupHeaderPropertyNameAlternative="Range">
-        <controls:DataGrid.Columns>
-            <controls:DataGridTextColumn Header="Rank" Binding="{Binding Rank}" Tag="Rank" />
-            <controls:DataGridComboBoxColumn Header="Mountain" Binding="{Binding Mountain}" Tag="Mountain" />
-            <controls:DataGridTextColumn Header="Height (m)" Binding="{Binding Height_m}" Tag="Height_m" />
-            <controls:DataGridTextColumn Header="Range" Binding="{Binding Range}" Tag="Range" />
-            <controls:DataGridTextColumn Header="Parent Mountain" Binding="{Binding Parent_mountain}" Tag="Parent_mountain" />
-        </controls:DataGrid.Columns>
-    </controls:DataGrid>-->
+        <Grid.Background>
+            <ImageBrush   Stretch="Fill" ImageSource="../Assets/leaderboard.gif" AlignmentY="Top" AlignmentX="Center"/>
+        </Grid.Background>
     </Grid>
 </Page>
