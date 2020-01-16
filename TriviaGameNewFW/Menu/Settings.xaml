@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="TriviaGameNewFW.Menu.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TriviaGameNewFW.Menu"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    >
+
+
+    <Grid>
+        <TextBlock FontSize="65" Foreground="black" >Settings</TextBlock>
+        <StackPanel>
+            <Grid>
+                <TextBlock FontSize="30" Foreground="black" Margin="574,269,793,671" RenderTransformOrigin="0.692,0.375" >Muziek</TextBlock>
+                <TextBlock FontSize="30" Foreground="black"  Margin="442,375,784,565">Algemeen Geluid</TextBlock>
+                <TextBlock FontSize="30" Foreground="black"  Margin="419,490,807,450">Moeilijkheidsgraad</TextBlock>
+                <ToggleSwitch x:Name="ToggleMuziek" Margin="750,269,0,0" VerticalAlignment="Top" Width="94" IsOn="True" Toggled="ToggleMuziek_Toggled"/>
+                <ToggleSwitch x:Name="ToggleGeluid" Margin="750,375,0,0" VerticalAlignment="Top" Width="94" IsOn="True" Toggled="ToggleGeluid_Toggled"/>
+                <ComboBox SelectionChanged="ColorComboBox_SelectionChanged" PlaceholderText="Automatisch" Width="200" Margin="750,485,0,0" Height="63">
+                    <x:String>Makkelijk</x:String>
+                    <x:String>Gemiddeld</x:String>
+                    <x:String>Moeilijk</x:String>
+                </ComboBox>
+            </Grid>
+        </StackPanel>
+
+    </Grid>
+</Page>
