@@ -7,43 +7,58 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    
-    
+
+
     <Grid>
-    <Grid.Resources>
-        <DataTemplate x:Key="RowDetailsTemplate">
-            <StackPanel>
-                <TextBlock Margin="20" Text="Here are the details for the selected mountain:" />
-                <Grid Margin="20,10" Padding="5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="Coordinates: " FontWeight="SemiBold" FontSize="13" />
-                    <TextBlock Grid.Row="1" Text="Prominence (m): " FontWeight="SemiBold" FontSize="13" />
-                    <TextBlock Grid.Row="2" Text="First Ascent (year): " FontWeight="SemiBold" FontSize="13" />
-                    <TextBlock Grid.Row="3" Text="No. of ascents: " FontWeight="SemiBold" FontSize="13" />
-                    <TextBlock Grid.Column="1" FontSize="13" Text="{Binding Coordinates}" HorizontalAlignment="Right" />
-                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="13" Text="{Binding Prominence}" HorizontalAlignment="Right" />
-                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="13" Text="{Binding First_ascent}" HorizontalAlignment="Right" />
-                    <TextBlock Grid.Row="3" Grid.Column="1" FontSize="13" Text="{Binding Ascents}" HorizontalAlignment="Right" />
-                </Grid>
-            </StackPanel>
-        </DataTemplate>
-    </Grid.Resources>
-    <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
+        <Grid.Resources>
+            <DataTemplate x:Key="RowDetailsTemplate">
+                <StackPanel>
+                    <TextBlock Margin="20" Text="Here are the details for the selected mountain:" />
+                    <Grid Margin="20,10" Padding="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Coordinates: " FontWeight="SemiBold" FontSize="13" />
+                        <TextBlock Grid.Row="1" Text="Prominence (m): " FontWeight="SemiBold" FontSize="13" />
+                        <TextBlock Grid.Row="2" Text="First Ascent (year): " FontWeight="SemiBold" FontSize="13" />
+                        <TextBlock Grid.Row="3" Text="No. of ascents: " FontWeight="SemiBold" FontSize="13" />
+                        <TextBlock Grid.Column="1" FontSize="13" Text="{Binding Coordinates}" HorizontalAlignment="Right" />
+                        <TextBlock Grid.Row="1" Grid.Column="1" FontSize="13" Text="{Binding Prominence}" HorizontalAlignment="Right" />
+                        <TextBlock Grid.Row="2" Grid.Column="1" FontSize="13" Text="{Binding First_ascent}" HorizontalAlignment="Right" />
+                        <TextBlock Grid.Row="3" Grid.Column="1" FontSize="13" Text="{Binding Ascents}" HorizontalAlignment="Right" />
+                    </Grid>
+                </StackPanel>
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Margin="124,58,76,142">
-            <TextBlock Text="Leaderboard van uw Adventure." VerticalAlignment="Center" Margin="5,0" Style="{ThemeResource SubtitleTextBlockStyle}"></TextBlock>
+            <!--<TextBlock Text="Leaderboard van uw Adventure." VerticalAlignment="Center" Margin="5,0" Style="{ThemeResource SubtitleTextBlockStyle}"></TextBlock>-->
         </StackPanel>
+        <TextBlock x:Name="txbxLeaderName1" HorizontalAlignment="Left" Margin="491,168,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="78" Width="364" Grid.RowSpan="2"/>
+        <TextBlock x:Name="txbxLeaderName2" HorizontalAlignment="Left" Margin="491,87,0,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="78" Width="364"/>
+        <TextBlock x:Name="txbxLeaderName3" HorizontalAlignment="Left" Margin="491,201,0,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="78" Width="364"/>
+        <TextBlock x:Name="txbxLeaderName4" HorizontalAlignment="Left" Margin="491,323,0,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="78" Width="364"/>
+        <TextBlock x:Name="txbxLeaderName5" HorizontalAlignment="Left" Margin="491,441,0,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="78" Width="364"/>
+        <TextBlock x:Name="txbxLeaderName6" HorizontalAlignment="Left" Margin="491,555,0,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="78" Width="364"/>
+
+
+        <TextBlock x:Name="txbxLeaderPoints1" HorizontalAlignment="Left" Margin="865,168,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="78" Width="118" Grid.RowSpan="2"/>
+        <TextBlock x:Name="txbxLeaderPoints2" HorizontalAlignment="Left" Margin="865,87,0,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="78" Width="118"/>
+        <TextBlock x:Name="txbxLeaderPoints3" HorizontalAlignment="Left" Margin="865,201,0,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="78" Width="118"/>
+        <TextBlock x:Name="txbxLeaderPoints4" HorizontalAlignment="Left" Margin="865,323,0,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="78" Width="118"/>
+        <TextBlock x:Name="txbxLeaderPoints5" HorizontalAlignment="Left" Margin="865,441,0,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="78" Width="118"/>
+        <TextBlock x:Name="txbxLeaderPoints6" HorizontalAlignment="Left" Margin="865,555,0,0" Grid.Row="1" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="78" Width="118"/>
+
         <Grid.Background>
             <ImageBrush   Stretch="Fill" ImageSource="../Assets/leaderboard.gif" AlignmentY="Top" AlignmentX="Center"/>
         </Grid.Background>

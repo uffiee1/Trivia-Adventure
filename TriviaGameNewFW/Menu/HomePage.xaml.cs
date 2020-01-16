@@ -1,31 +1,67 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Popups;
-using Windows.UI.Xaml;
+using System.Data;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace TriviaGameNewFW.Menu
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class HomePage : Page
     {
+        readonly MySqlConnection conn = new MySqlConnection("Server = localhost; User Id = root; Password = ''; Database = triviadb");
+        MySqlDataAdapter adapter = new MySqlDataAdapter();
+        public DataSet ds = new DataSet();
+
+        db connection = new db();
+
         public HomePage()
         {
             this.InitializeComponent();
+            Leaderboard();
+        }
+
+        private void Leaderboard()
+        {
+            string QueryString = $"SELECT `username`,`score` FROM `user` ORDER BY score DESC LIMIT 6";
+
+            MySqlCommand cmd = new MySqlCommand(QueryString, conn);
+
+            conn.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            var name = new List<string>();
+            var score = new List<string>();
+
+
+            while (reader.Read())
+            {
+
+                name.Add(reader.GetString("username"));
+                score.Add(reader.GetString("score"));
+
+
+            }
+            
+            txbxLeaderName1.Text = name[0];
+            txbxLeaderName2.Text = name[1];
+
+            txbxLeaderName3.Text = name[2];
+            txbxLeaderName4.Text = name[3];
+
+            txbxLeaderName5.Text = name[4];
+            txbxLeaderName6.Text = name[5];
+
+            txbxLeaderPoints1.Text = score[0];
+            txbxLeaderPoints2.Text = score[1];
+
+            txbxLeaderPoints3.Text = score[2];
+            txbxLeaderPoints4.Text = score[3];
+
+            txbxLeaderPoints5.Text = score[4];
+            txbxLeaderPoints6.Text = score[5];
+
+
+
+
+            conn.Close();
         }
     }
 }
