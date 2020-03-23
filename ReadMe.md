@@ -8,9 +8,8 @@ Create a quiz app that randomly displays a question with a multiple choice of an
 - [x] Add high scores
 - [x] Add a countdown
 - [x] Allow multiple players (HINT: You could go really advanced and use Socket.io to allow online play!)
-- [ ] Win Badges
+- [ ] ~Win Badges~
 
-
-# Logview
+## Logview
 Login function
 - https://docs.microsoft.com/en-us/aspnet/mvc/overview/security/create-an-aspnet-mvc-5-web-app-with-email-confirmation-and-password-reset
